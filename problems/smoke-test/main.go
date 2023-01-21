@@ -19,7 +19,7 @@ func (SmokeTest) Handle(conn net.Conn) {
 }
 
 func main() {
-	config := server.NewConfig(8080)
+	config := server.NewConfig(10000)
 
 	server.RunTCP(SmokeTest{config})
 }

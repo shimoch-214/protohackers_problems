@@ -43,7 +43,7 @@ func (c *Client) Send(message []byte) (string, error) {
 }
 
 func main() {
-	c := NewClient("0.0.0.0", 8080)
+	c := NewClient("0.0.0.0", 10000)
 
 	response, err := c.Send([]byte("send message with tcp connection"))
 	if err != nil {
