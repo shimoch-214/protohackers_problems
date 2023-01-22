@@ -26,8 +26,8 @@ func isPrimeNumber(number float64) bool {
 type PrimeTime struct{ *server.Config }
 
 type Request struct {
-	Method string
-	Number json.Number
+	Method string      `json:"method"`
+	Number json.Number `json:"number"`
 }
 
 func (req *Request) isValidRequest() bool {
