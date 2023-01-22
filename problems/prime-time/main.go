@@ -11,7 +11,7 @@ import (
 )
 
 func isPrimeNumber(number float64) bool {
-	if number < 2 {
+	if number < 2 || math.Floor(number) != number {
 		return false
 	}
 	sqrt := math.Floor(math.Sqrt(number))
@@ -26,16 +26,12 @@ func isPrimeNumber(number float64) bool {
 type PrimeTime struct{ *server.Config }
 
 type Request struct {
-	Method string      `json:"method"`
-	Number json.Number `json:"number"`
+	Method string  `json:"method"`
+	Number float64 `json:"number"`
 }
 
 func (req *Request) isValidRequest() bool {
-	if req.Method != "isPrime" {
-		return false
-	}
-	_, err := req.Number.Float64()
-	return err == nil
+	return req.Method == "isPrime"
 }
 
 type Response struct {
@@ -61,8 +57,7 @@ func (PrimeTime) Handle(conn net.Conn) {
 			}
 			conn.Close()
 		} else {
-			number, _ := req.Number.Float64()
-			isPrime := isPrimeNumber(number)
+			isPrime := isPrimeNumber(req.Number)
 			res := Response{
 				Method: "isPrime",
 				Prime:  isPrime,
