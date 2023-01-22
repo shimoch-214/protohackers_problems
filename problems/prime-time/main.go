@@ -56,7 +56,7 @@ func (PrimeTime) Handle(conn net.Conn) {
 		if err != nil || !req.isValidRequest() {
 			fmt.Println(err)
 			resMessage = []byte("invalid request")
-			if _, err := conn.Write(resMessage); err != nil {
+			if _, err := conn.Write(append(resMessage, []byte("\n")...)); err != nil {
 				log.Fatal(err)
 			}
 			conn.Close()
