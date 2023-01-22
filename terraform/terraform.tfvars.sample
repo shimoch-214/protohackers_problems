@@ -1,0 +1,3 @@
+my_ip           = {ip address allowed to ssh}
+key_name        = {ssh key}
+public_key_path = {public key path}
