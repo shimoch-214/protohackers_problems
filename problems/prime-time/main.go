@@ -39,8 +39,8 @@ func (req *Request) isValidRequest() bool {
 }
 
 type Response struct {
-	Method string
-	Prime  bool
+	Method string `json:"method"`
+	Prime  bool   `json:"prime"`
 }
 
 func (PrimeTime) Handle(conn net.Conn) {
