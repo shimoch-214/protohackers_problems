@@ -1,0 +1,4 @@
+terraform/infra.s3.tfbackend
+.terraform
+.terraform.lock.hcl
+terraform.tfvars
