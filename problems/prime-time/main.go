@@ -11,7 +11,7 @@ import (
 )
 
 func isPrimeNumber(number float64) bool {
-	if number == 1 {
+	if number < 2 {
 		return false
 	}
 	sqrt := math.Floor(math.Sqrt(number))
