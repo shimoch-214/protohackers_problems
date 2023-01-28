@@ -14,7 +14,7 @@ func isPrimeNumber(number float64) bool {
 		return false
 	}
 	sqrt := math.Floor(math.Sqrt(number))
-	for i := sqrt; i > 1; i-- {
+	for i := float64(2); i <= sqrt; i++ {
 		if math.Mod(number, i) == 0 {
 			return false
 		}
