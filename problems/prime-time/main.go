@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"encoding/json"
-	"fmt"
 	"log"
 	"math"
 	"net"
@@ -49,8 +48,9 @@ func (PrimeTime) Handle(conn net.Conn) {
 
 		var req Request
 		err := json.Unmarshal(reqMessage, &req)
+		log.Println(string(reqMessage))
 		if err != nil || !req.isValidRequest() {
-			fmt.Println(err)
+			log.Println(err)
 			resMessage = []byte("invalid request")
 			if _, err := conn.Write(append(resMessage, []byte("\n")...)); err != nil {
 				log.Fatal(err)
